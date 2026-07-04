@@ -6,7 +6,7 @@ import Reveal from "../components/Reveal";
 import { IconArrowRight } from "../components/Icons";
 
 export const metadata = {
-  title: "Joshua Adams: Ops automation for multi-region supplement brands",
+  title: "Joshua Adams: Ops automation for multi-region product brands",
 };
 
 export default function HomePage() {
@@ -15,7 +15,7 @@ export default function HomePage() {
       <header className="hero grid-bg">
         <div className="hero-inner">
           <div className="hero-copy">
-            <p className="kicker rise">Operations automation for supplement brands</p>
+            <p className="kicker rise">Operations automation for product brands</p>
             <h1 className="rise">
               One accurate view of stock in every warehouse.{" "}
               <span style={{ color: "var(--accent-ink)" }}>
@@ -24,7 +24,7 @@ export default function HomePage() {
               The spreadsheet work, automated away.
             </h1>
             <p className="lead rise-2" style={{ marginTop: "24px" }}>
-              For DTC supplement and wellness brands on Shopify doing
+              For any business selling physical products on Shopify doing
               £1&ndash;10m, with stock split across UK, EU or US warehouses.
             </p>
             <div className="hero-actions rise-3">

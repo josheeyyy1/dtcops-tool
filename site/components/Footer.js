@@ -12,8 +12,8 @@ export default function Footer() {
             Joshua Adams
           </div>
           <p style={{ marginTop: "12px" }}>
-            Operations automation for DTC supplement brands &middot; UK based,
-            working across UK, EU and US.
+            Operations automation for multi-warehouse product brands &middot;
+            UK based, working across UK, EU and US.
           </p>
         </div>
         <div className="footer-links">

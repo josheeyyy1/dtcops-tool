@@ -27,10 +27,10 @@ const mono = Spline_Sans_Mono({
 export const metadata = {
   title: {
     template: "%s | Joshua Adams",
-    default: "Joshua Adams: Ops automation for multi-region supplement brands",
+    default: "Joshua Adams: Ops automation for multi-region product brands",
   },
   description:
-    "One accurate view of stock in every warehouse, reorder points that fire before you run out, and the spreadsheet work automated away. For DTC supplement brands on Shopify selling across UK, EU and US.",
+    "One accurate view of stock in every warehouse, reorder points that fire before you run out, and the spreadsheet work automated away. For businesses selling physical products on Shopify across UK, EU and US.",
 };
 
 export default function RootLayout({ children }) {

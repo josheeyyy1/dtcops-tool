@@ -1,9 +1,14 @@
 # Ops Consultancy — Project Anchor
 
 ## What this is
-Productised operations-automation consultancy for DTC supplement/wellness
-brands (£1–10m, Shopify, multi-region fulfilment). Owner: Joshua. Everything
-here is a sellable or reusable asset, not an experiment.
+Productised operations-automation consultancy for DTC brands selling
+physical products (£1–10m, Shopify, multi-region fulfilment). Owner: Joshua.
+Everything here is a sellable or reusable asset, not an experiment.
+Positioning note: originally wedged on supplement/wellness brands; widened
+on 2026-07-04 to all physical-product businesses (site copy updated, but
+positioning/ and outreach/ docs still use the supplements wedge). Joshua's
+in-house provenance story remains a supplements brand, that part is factual
+and stays.
 
 ## Current state
 - Positioning, offers, audit product, asset library, site, outreach kit, and
@@ -47,7 +52,7 @@ here is a sellable or reusable asset, not an experiment.
   order given in `assets/airtable/schema.md`.
 
 ## Design Context (site/)
-- Audience: sceptical, busy founders/ops leads of £1–10m DTC supplement
+- Audience: sceptical, busy founders/ops leads of £1–10m DTC physical-product
   brands, evaluating one person's competence before paying £2,000.
   Emotional goals: confidence and relief, not excitement.
 - Aesthetic: high-end premium minimalist high-tech, aligned with

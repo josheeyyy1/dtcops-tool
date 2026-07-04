@@ -1,0 +1,10 @@
+Dimension,Name,Weight,Score (0-3),Evidence (call/data),Weighted (auto: Score/3*Weight),Fix if <=1,Impact (1-5),Effort (1-5),Priority (auto: Impact/Effort)
+D1,Stock visibility,20%,,,,Single source of truth: Airtable base + location sync,,,
+D2,Reorder discipline,20%,,,,Per-SKU reorder points + low-stock flags,,,
+D3,Demand awareness,10%,,,,Velocity per SKU/region from Shopify,,,
+D4,Multi-region balance,15%,,,,Allocation rules + rebalance triggers,,,
+D5,Fulfilment accountability,10%,,,,3PL scorecard vs contract,,,
+D6,Data hygiene,10%,,,,SKU master cleanup + lead-time refresh,,,
+D7,Manual workload,10%,,,,Sync jobs + alerts replace manual copying,,,
+D8,Cash in stock,5%,,,,Stock-value + expiry dashboard,,,
+TOTAL,,100%,,,SUM of weighted column -> band,,,

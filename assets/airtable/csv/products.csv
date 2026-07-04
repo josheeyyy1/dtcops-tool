@@ -1,0 +1,3 @@
+SKU,Product Name,Status,Supplier,Unit Cost,Case Size,MOQ,Lead Time Days,Safety Stock Days,Target Cover Days,Shelf Life Months
+PLACEHOLDER-SKU-001,PLACEHOLDER Product One,Active,PLACEHOLDER-SupplierCo Ltd,4.20,24,500,45,14,60,24
+PLACEHOLDER-SKU-002,PLACEHOLDER Product Two,Active,PLACEHOLDER-VitaLabs BV,6.80,12,1000,60,14,75,18

@@ -1,0 +1,3 @@
+Supplier Name,Contact Name,Email,Currency,Payment Terms,Default Lead Time Days,Default MOQ,Notes
+PLACEHOLDER-SupplierCo Ltd,PLACEHOLDER-Jane Doe,placeholder@example.com,GBP,30% deposit / 70% on shipping,45,500,DELETE THIS ROW after import - example only
+PLACEHOLDER-VitaLabs BV,PLACEHOLDER-Piet Jansen,placeholder2@example.com,EUR,Net 30,60,1000,DELETE THIS ROW after import - example only

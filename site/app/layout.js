@@ -38,6 +38,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en-GB"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
+      suppressHydrationWarning
     >
       <body>
         <script

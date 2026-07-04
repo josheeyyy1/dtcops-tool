@@ -335,10 +335,10 @@ section + section { border-top: 1px solid var(--line-soft); }
   font-size: 1.15rem; font-weight: 500; color: var(--ink);
 }
 
-.conv-chip.c1 { left: 0; top: 6%; transform: translate(calc(var(--p) * 7rem), calc(var(--p) * 6.2rem)); }
-.conv-chip.c2 { left: 50%; top: 0; transform: translate(-50%, calc(var(--p) * 7.2rem)); }
-.conv-chip.c3 { right: 0; top: 6%; transform: translate(calc(var(--p) * -7rem), calc(var(--p) * 6.2rem)); }
-.conv-chip { opacity: calc(1 - var(--p) * 1.05); }
+.conv-chip.c1 { left: 0; top: 6%; transform: translate(calc(var(--p) * 7rem), calc(var(--p) * 6.2rem)) scale(calc(1 - var(--p) * 0.08)); }
+.conv-chip.c2 { left: 50%; top: 0; transform: translate(-50%, calc(var(--p) * 7.2rem)) scale(calc(1 - var(--p) * 0.08)); }
+.conv-chip.c3 { right: 0; top: 6%; transform: translate(calc(var(--p) * -7rem), calc(var(--p) * 6.2rem)) scale(calc(1 - var(--p) * 0.08)); }
+.conv-chip { opacity: calc(1 - var(--p) * 0.88); }
 
 .conv-result {
   position: absolute; left: 50%; top: 62%;
@@ -547,11 +547,12 @@ footer { margin-top: auto; border-top: 1px solid var(--line-soft); }
   .hero-inner { grid-template-columns: 1fr; gap: var(--sp-6); }
   .inst { margin: 0 auto; max-width: 100%; }
   .conv-stage { height: 13rem; }
-  .conv-chip.c1 { transform: translate(calc(var(--p) * 4.6rem), calc(var(--p) * 5.4rem)); }
-  .conv-chip.c3 { transform: translate(calc(var(--p) * -4.6rem), calc(var(--p) * 5.4rem)); }
-  .conv-chip.c2 { transform: translate(-50%, calc(var(--p) * 6.4rem)); }
+  .conv-chip.c1 { transform: translate(calc(var(--p) * 4.6rem), calc(var(--p) * 5.4rem)) scale(calc(1 - var(--p) * 0.08)); }
+  .conv-chip.c3 { transform: translate(calc(var(--p) * -4.6rem), calc(var(--p) * 5.4rem)) scale(calc(1 - var(--p) * 0.08)); }
+  .conv-chip.c2 { transform: translate(-50%, calc(var(--p) * 6.4rem)) scale(calc(1 - var(--p) * 0.08)); }
   .conv-chip { min-width: 6.8rem; padding: var(--sp-2) var(--sp-3); }
-  .conv-result { padding: var(--sp-3) var(--sp-4); }
+  .conv-result { padding: var(--sp-3) var(--sp-4); white-space: normal; width: max-content; max-width: 92%; }
+  .conv-result .conv-num { font-size: 1rem; }
   .ledger-row { grid-template-columns: 2.4rem minmax(0, 1fr); }
   .ledger-tag { display: none; }
   .own { grid-template-columns: 1fr; gap: var(--sp-3); }

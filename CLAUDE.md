@@ -10,7 +10,8 @@ here is a sellable or reusable asset, not an experiment.
   operating README are built. See README.md for the asset map and launch plan.
 - Pricing is filled in with recommended values throughout (£2,000 audit /
   £9,500 build / £1,500pm retainer, positioning/offers.md) — change it there
-  and in site/index.html together if Joshua lands on different numbers.
+  and across site/app/*/page.js and site/components/Nav.js together if
+  Joshua lands on different numbers.
 - One open decision owned by Joshua: the first-15 outreach list
   (outreach/qualification-checklist.md).
 - The site's "book a call" CTA is a mailto: link as a stopgap; swapping in a
@@ -24,7 +25,7 @@ here is a sellable or reusable asset, not an experiment.
 - `positioning/` — wedge, ICP, offers, recommended pricing
 - `audit/` — scoping questions, scoring sheet, report template (the first sale)
 - `assets/` — Airtable schema + CSVs, workflow blueprints, KPI dashboard spec
-- `site/` — single static page, deploys to Vercel as-is
+- `site/` — Next.js app (App Router), four pages, deploys to Vercel
 - `outreach/` — cold email, LinkedIn, follow-ups, call script, qualification
 - `README.md` — the operating system: client journey + dated launch week
 
@@ -39,7 +40,9 @@ here is a sellable or reusable asset, not an experiment.
   (gitignored).
 
 ## Build/deploy
-- No build step anywhere. Site is plain HTML/CSS: `site/index.html`, deploy
-  with `vercel deploy site/` or drag into Vercel dashboard.
+- `site/` is the only part of this repo with a build step: a Next.js app
+  (`npm install && npm run build` inside `site/`). Everything else
+  (positioning/, audit/, assets/, outreach/) is plain markdown and CSVs,
+  no build. See site/DEPLOY.md for the Vercel import steps.
 - CSVs in `assets/airtable/` import directly into a new Airtable base in the
   order given in `assets/airtable/schema.md`.

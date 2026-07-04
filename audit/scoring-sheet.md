@@ -1,74 +1,67 @@
 # Audit Scoring Sheet
 
-Eight dimensions, each scored 0–3 against the anchors below. Evidence comes
-from the scoping call (see `scoping-call-questions.md`) plus the data review.
-`scoring-sheet.csv` is the working copy: fill it per client (import into
-Google Sheets or Airtable, one row per dimension).
+Eight dimensions, scored 0–3 from the scoping call plus the data review.
+`scoring-sheet.csv` is the working copy — one row per dimension per client.
 
 ## Scale
 
-- **0 — Absent:** No process. Runs on memory, luck, or one person's heroics.
-- **1 — Manual:** A process exists but lives in heads/spreadsheets, breaks
-  when someone's away, and is applied inconsistently.
-- **2 — Systematised:** Written down or tooled, applied consistently, but
-  needs manual pushing or doesn't cover all regions/SKUs.
-- **3 — Automated:** Runs without a human trigger, covers all regions,
-  exceptions surface themselves.
+- **0 Absent** — no process, runs on memory or luck.
+- **1 Manual** — exists but lives in heads/spreadsheets, breaks when someone's away.
+- **2 Systematised** — written down or tooled, consistent, but needs manual pushing.
+- **3 Automated** — runs without a human trigger, covers all regions.
 
-Half points are allowed. Score what you saw, not what they aspire to.
+Half points allowed. Score what you saw, not what they aspire to.
 
-## Dimensions and weights
+## Dimensions
 
-| # | Dimension | Weight | What 3 looks like | What 0 looks like |
+| # | Dimension | Weight | 3 looks like | 0 looks like |
 |---|---|---|---|---|
-| D1 | Stock visibility | 20% | One system of record, all locations, trusted, current | Nobody can say what's where without checking 3 places |
-| D2 | Reorder discipline | 20% | Per-SKU reorder points from velocity + lead time + safety stock, fired automatically | Reorders on gut feel or when the shelf looks empty |
-| D3 | Demand awareness | 10% | Velocity per SKU per region tracked and used; seasonality known | Sales data never meets stock decisions |
-| D4 | Multi-region balance | 15% | Deliberate allocation rules; imbalance triggers rebalancing | One region stocks out while another over-holds, routinely |
-| D5 | Fulfilment accountability | 10% | 3PL SLA and accuracy measured against contract, reviewed | 3PL judged by absence of complaints |
-| D6 | Data hygiene | 10% | Clean SKU master, one source wins conflicts, lead times current | Conflicting numbers, stale lead times, duplicate SKUs |
-| D7 | Manual workload | 10% | Near-zero routine copying; humans handle exceptions only | Hours/week of copy-paste; founder reconciles at night |
-| D8 | Cash in stock | 5% | Stock value, cover and expiry risk known and managed | Cash position in stock unknown; expired stock written off before |
+| D1 | Stock visibility | 20% | One trusted system, all locations, current | Nobody can say what's where |
+| D2 | Reorder discipline | 20% | Reorder points fire automatically per SKU | Gut feel, empty-shelf triggers |
+| D3 | Demand awareness | 10% | Velocity per SKU/region tracked and used | Sales never meets stock decisions |
+| D4 | Multi-region balance | 15% | Deliberate allocation, rebalances on trigger | One region stocks out, another over-holds |
+| D5 | Fulfilment accountability | 10% | 3PL SLA/accuracy measured vs contract | Judged only by absence of complaints |
+| D6 | Data hygiene | 10% | Clean SKU master, one source wins, lead times current | Conflicting numbers, stale lead times |
+| D7 | Manual workload | 10% | Near-zero routine copying | Hours/week of copy-paste |
+| D8 | Cash in stock | 5% | Stock value, cover and expiry risk known | Cash position in stock unknown |
 
-Weighted total = Σ (score/3 × weight) → a percentage.
+Weighted total = Σ (score/3 × weight), as a percentage.
 
 ## Bands
 
-| Total | Band | Meaning (use these words in the report) |
+| Total | Band | Meaning |
 |---|---|---|
-| 0–35% | **Critical** | The business is flying blind. Stock-outs and over-ordering are structural, not bad luck. |
-| 36–55% | **Fragile** | Works because specific people push it. One holiday, one growth spurt, or one new region breaks it. |
-| 56–75% | **Functional** | The basics hold. Money is leaking at the edges: regional imbalance, manual hours, slow reactions. |
-| 76–100% | **Strong** | Tuning, not rebuilding. (Rare at this size. If you score this honestly, say so and recommend the retainer only.) |
+| 0–35% | Critical | Flying blind; stock-outs and over-ordering are structural. |
+| 36–55% | Fragile | Works because specific people push it. One holiday breaks it. |
+| 56–75% | Functional | Basics hold; money leaks at the edges. |
+| 76–100% | Strong | Tuning, not rebuilding — rare at this size. |
 
-## Score → fix-list mapping
+## Fix list (any dimension scoring ≤1)
 
-For every dimension at 0 or 1, the fix below goes on the list. Rank the final
-list by **Impact ÷ Effort** (both 1–5, from the client's own numbers: missed
-revenue, hours × loaded cost, cash over-held). Top 3 become the report's
-"Do these first".
-
-| Dimension low | Prescribed fix | Typical impact | Effort |
+| Low | Fix | Impact | Effort |
 |---|---|---|---|
-| D1 | Single source of truth: Airtable base, all locations synced | High: every other fix depends on it | Medium |
-| D2 | Reorder points per SKU: velocity × lead time + safety stock, low-stock flags | High: directly kills stock-outs and over-orders | Medium |
-| D3 | Velocity tracking per SKU/region from Shopify, 30/60/90-day | Medium: feeds D2, exposes seasonality | Low |
-| D4 | Allocation rules + rebalance triggers across warehouses | High for 2+ regions: usually the biggest hidden leak | Medium |
-| D5 | 3PL scorecard: dispatch SLA, error rate, stock accuracy vs contract | Medium: turns a vendor relationship into data | Low |
-| D6 | SKU master cleanup, lead-time refresh, conflict rules | Medium: unblocks everything else, boring but load-bearing | Low |
-| D7 | Automate the copying: sync jobs + alerts replace the human ferrying | High: hours back immediately, error rate drops | Medium |
-| D8 | Stock-value and expiry dashboard: cash tied, cover days, expiry horizon | Medium: finance finally sees ops | Low |
+| D1 | Single source of truth, all locations synced | High — everything else depends on it | Medium |
+| D2 | Reorder points per SKU: velocity × lead time + safety stock | High — kills stock-outs and over-orders | Medium |
+| D3 | Velocity tracking per SKU/region, 30/60/90-day | Medium — feeds D2 | Low |
+| D4 | Allocation rules + rebalance triggers | High for 2+ regions — usually the biggest leak | Medium |
+| D5 | 3PL scorecard vs contract | Medium | Low |
+| D6 | SKU master cleanup, lead-time refresh | Medium — unblocks everything else | Low |
+| D7 | Sync jobs + alerts replace manual copying | High — hours back immediately | Medium |
+| D8 | Stock-value + expiry dashboard | Medium | Low |
 
-## Costing the pain (do this before writing the report)
+Rank the final list by Impact ÷ Effort, using the client's own numbers. Top
+3 become the report's "do these first."
 
-Three numbers, from their own data, conservative:
+## Costing the pain
 
-1. **Stock-out cost:** units missed × price × weeks out, on top SKUs, last 2
-   quarters. For repeat-purchase products add churn: a subscriber lost to a
-   stock-out is LTV gone, not one order. State assumptions in the report.
-2. **Manual hours:** hrs/week (from Q8) × loaded hourly cost × 52.
-3. **Over-held cash:** stock value above target cover days, per region, plus
-   any expiry write-offs in the last year.
+Three numbers from their data, kept conservative:
 
-The fix list is ranked against these. The build quote should be visibly
-smaller than their annual leak, or don't propose it.
+1. **Stock-out cost** — units missed × price × weeks out, top SKUs, last 2
+   quarters. Add churn for subscription products: a lost subscriber is LTV
+   gone, not one order.
+2. **Manual hours** — hrs/week × loaded hourly cost × 52.
+3. **Over-held cash** — stock value above target cover days, plus any
+   expiry write-offs in the last year.
+
+The build quote should be visibly smaller than their annual leak, or don't
+propose it.

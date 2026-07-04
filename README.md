@@ -30,10 +30,9 @@ Each day has a hard stop condition. If a day's work is done by lunch, start
 the next day's work; never the reverse.
 
 **Day 1 — Mon 6 Jul: decisions and identity.**
-Prices are pre-filled at the recommended £2,000 / £9,500 / £1,500pm
-throughout the repo — react to them in `positioning/offers.md` (change in
-both offers.md and index.html if you land on different numbers, nothing
-else depends on the exact figures). Update LinkedIn headline per
+Prices are pre-filled at £2,000 / £9,500 / £1,500pm (`positioning/offers.md`)
+— react to them, changing both offers.md and index.html together if you
+land on different numbers. Update LinkedIn headline per
 `outreach/linkedin.md`. Set up a scheduler (Calendly/Cal.com free tier,
 30-min "Scoping call") and swap it in for the `mailto:` link in
 `site/index.html`'s CTA — the mailto works as a stopgap if you don't get to

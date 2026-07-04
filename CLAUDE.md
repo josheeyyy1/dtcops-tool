@@ -16,6 +16,9 @@ here is a sellable or reusable asset, not an experiment.
 - The site's "book a call" CTA is a mailto: link as a stopgap; swapping in a
   real scheduler (Calendly/Cal.com) is a real task, not blocking, see
   site/DEPLOY.md.
+- Pushed to GitHub: github.com/josheeyyy1/dtcops-tool. For Vercel, import
+  that repo and set Root Directory to `site` (the repo root also holds the
+  non-deployable positioning/audit/asset docs).
 
 ## Structure
 - `positioning/` — wedge, ICP, offers, recommended pricing

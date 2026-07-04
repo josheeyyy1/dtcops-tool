@@ -1,0 +1,12 @@
+# Personal files that predate the project - not part of the repo
+*.jpeg
+*.jpg
+
+# OS noise
+Thumbs.db
+.DS_Store
+
+# Per-client working files (never commit client data)
+clients/
+*.local.*
+.env

@@ -1,3 +1,5 @@
+import { BOOKING_URL } from "../../lib/constants";
+
 export const metadata = {
   title: "Book a scoping call",
   description: "Thirty minutes, free, no pitch.",
@@ -15,12 +17,14 @@ export default function BookPage() {
       </p>
       <a
         className="cta"
-        href="mailto:joshuaadams91@gmail.com?subject=Scoping%20call"
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        Email me to book a call
+        Book a call
       </a>
       <p className="muted spaced">
-        Reply with a couple of times that suit and I'll confirm.
+        Pick a time that suits, I'll confirm by email.
       </p>
     </>
   );

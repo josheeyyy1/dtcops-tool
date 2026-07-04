@@ -33,10 +33,8 @@ the next day's work; never the reverse.
 Prices are pre-filled at £2,000 / £9,500 / £1,500pm (`positioning/offers.md`)
 — react to them, changing offers.md and the site's page files together if
 you land on different numbers. Update LinkedIn headline per
-`outreach/linkedin.md`. Set up a scheduler (Calendly/Cal.com free tier,
-30-min "Scoping call") and swap it in for the `mailto:` links in
-`site/app/book/page.js` and `site/components/Nav.js` — the mailto works as
-a stopgap if you don't get to this today.
+`outreach/linkedin.md`. The booking link (Google Calendar) is already wired
+into every CTA on the site via `site/lib/constants.js`.
 *Done when: prices confirmed (or changed), headline live.*
 
 **Day 2 — Tue 7 Jul: site live.**

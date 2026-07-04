@@ -14,9 +14,8 @@ here is a sellable or reusable asset, not an experiment.
   Joshua lands on different numbers.
 - One open decision owned by Joshua: the first-15 outreach list
   (outreach/qualification-checklist.md).
-- The site's "book a call" CTA is a mailto: link as a stopgap; swapping in a
-  real scheduler (Calendly/Cal.com) is a real task, not blocking, see
-  site/DEPLOY.md.
+- Every "book a call" CTA on the site points to the real Google Calendar
+  link, set once in site/lib/constants.js as BOOKING_URL.
 - Pushed to GitHub: github.com/josheeyyy1/dtcops-tool. For Vercel, import
   that repo and set Root Directory to `site` (the repo root also holds the
   non-deployable positioning/audit/asset docs).

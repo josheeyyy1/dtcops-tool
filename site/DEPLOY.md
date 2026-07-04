@@ -6,11 +6,10 @@ filled in with the current recommended values (see `../positioning/offers.md`
 for the pricing reasoning) — change them here and there together if you
 land on different numbers.
 
-The "book a call" CTA points to a `mailto:` link, not a real scheduler yet.
-Deliberate stopgap: nothing to configure, works today. Set up a scheduler
-(Calendly or Cal.com, free tier, one 30-min event named "Scoping call") and
-swap the `href="mailto:..."` in `app/book/page.js` and `components/Nav.js`
-for the booking link when you get to it — not blocking send.
+Every "book a call" CTA (nav, home, offers, how-it-works, and the book page
+itself) points to the real Google Calendar scheduling link, set once in
+`lib/constants.js` as `BOOKING_URL`. Change the link there if it ever moves
+— nothing else needs editing.
 
 ## Run locally
 

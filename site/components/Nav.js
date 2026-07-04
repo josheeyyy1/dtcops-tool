@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BOOKING_URL } from "../lib/constants";
 
 export default function Nav() {
   return (
@@ -7,7 +8,14 @@ export default function Nav() {
       <div className="nav-links">
         <Link href="/offers">Offers</Link>
         <Link href="/how-it-works">How it works</Link>
-        <Link href="/book" className="cta cta-small">Book a call</Link>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta cta-small"
+        >
+          Book a call
+        </a>
       </div>
     </nav>
   );

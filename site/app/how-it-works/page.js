@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BOOKING_URL } from "../../lib/constants";
 
 export const metadata = {
   title: "How it works",
@@ -44,8 +45,9 @@ export default function HowItWorksPage() {
       <p className="spaced">
         See what that looks like as a paid engagement on{" "}
         <Link href="/offers">the offers page</Link>, or{" "}
-        <Link href="/book">book a scoping call</Link> to talk through your
-        setup.
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+          book a scoping call
+        </a> to talk through your setup.
       </p>
     </>
   );

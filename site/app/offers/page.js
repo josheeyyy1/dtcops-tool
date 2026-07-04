@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { BOOKING_URL } from "../../lib/constants";
 
 export const metadata = {
   title: "How we work together",
@@ -58,7 +58,14 @@ export default function OffersPage() {
         to, and the report stands on its own even if we never speak again.
       </p>
       <p className="spaced">
-        <Link className="cta" href="/book">Book a scoping call</Link>
+        <a
+          className="cta"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a scoping call
+        </a>
       </p>
     </>
   );

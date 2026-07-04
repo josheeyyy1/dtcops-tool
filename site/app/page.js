@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BOOKING_URL } from "../lib/constants";
 
 export const metadata = {
   title: "Joshua Adams: Ops automation for multi-region supplement brands",
@@ -17,7 +18,14 @@ export default function HomePage() {
           For DTC supplement and wellness brands on Shopify doing
           £1&ndash;10m, with stock split across UK, EU or US warehouses.
         </p>
-        <Link className="cta" href="/book">Book a scoping call</Link>
+        <a
+          className="cta"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a scoping call
+        </a>
       </header>
 
       <section>

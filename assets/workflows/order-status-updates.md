@@ -1,63 +1,52 @@
 # Blueprint 3: Order Status → Sales Daily + Fulfilment Tracking
 
-**Purpose:** two jobs in one workflow: (a) write daily sales per SKU per
-region into Sales Daily so velocity is real, (b) track dispatch times so the
-fulfilment SLA number on the dashboard is measured, not vibes.
+**Purpose:** two jobs, one workflow — (a) daily sales per SKU per region
+into Sales Daily so velocity is real, (b) dispatch-time tracking so the
+fulfilment SLA number is measured, not vibes.
 
 ## Trigger
 
-Schedule: daily 02:00 client timezone, processing the previous day. Daily
-batch beats webhooks here: no missed-webhook drift, one day's data arrives
-whole, and Shopify order edits/refunds from the day are settled. (Add the
-webhook variant later only if a client genuinely needs intraday numbers.)
+Daily 02:00 client timezone, processing the previous day. Daily batch beats
+webhooks here: no missed-webhook drift, one day's data arrives whole after
+edits/refunds settle.
 
-## Flow (n8n nodes)
+## Flow (n8n)
 
-1. `CONFIG` (Set): base/table IDs, region map
-   `{shopify_location_id or country_code → region}`, SLA threshold hours.
-2. `Shopify: Get Orders` — `created_at` within yesterday, status any,
-   fields: line items, fulfillments, shipping address, cancelled/refund
-   flags. Paginate fully.
-3. `Code: sales aggregation` — per line item: resolve region (fulfilment
-   location if assigned, else ship-to country → region map). Exclude
-   cancelled orders and fully refunded lines. Output
-   `{date, SKU, region, units, net_revenue}` aggregated.
-4. `Airtable: upsert Sales Daily` keyed `date+SKU+region` (idempotent:
-   re-running a day overwrites, never duplicates).
-5. `Code: fulfilment latency` — for orders *fulfilled* yesterday:
-   `fulfilled_at - created_at` in hours, per fulfilment location. Output
-   per-location: orders shipped, median hours, % ≤ SLA threshold.
-6. `Airtable: append to a scratch table or hold in n8n static data` — the
-   weekly KPI roll-up (blueprint 4) consumes these dailies into KPI
-   Snapshots. Simplest robust option: a small `Fulfilment Daily` table
-   (Date, Location, Orders Shipped, Median Hours, % ≤48h): add it to the
-   base if the client cares about SLA (multi-3PL clients always do).
-7. Also refresh `Avg Daily Sales 30d` on Inventory Levels **weekly, not
-   daily** (blueprint 4 does it): reorder points shouldn't wobble with every
-   spike; a 30-day window updated weekly is stable enough to trust.
+1. `CONFIG`: base/table IDs, region map (`location or country → region`),
+   SLA threshold hours.
+2. Get yesterday's orders (any status), line items, fulfillments, shipping
+   address, cancelled/refund flags — paginate fully.
+3. Aggregate per line item: resolve region (fulfilment location if set,
+   else ship-to country), exclude cancelled/fully refunded, output
+   `{date, SKU, region, units, net_revenue}`.
+4. Upsert Sales Daily keyed `date+SKU+region` (re-running a day overwrites,
+   never duplicates).
+5. Fulfilment latency: for orders fulfilled yesterday, `fulfilled_at -
+   created_at` in hours per location — orders shipped, median hours, %
+   ≤ SLA threshold.
+6. Write to a `Fulfilment Daily` table (Date, Location, Orders Shipped,
+   Median Hours, % ≤48h) — add it to the base if the client tracks SLA
+   (multi-3PL clients always do; the weekly roll-up consumes it).
+7. Refresh `Avg Daily Sales 30d` **weekly, not daily** (blueprint 4) — a
+   30-day window updated weekly is stable enough to trust for reorder
+   points; daily would make them wobble with every spike.
 
 ## Edge cases
 
 | Case | Policy |
 |---|---|
-| Order with no SKU match in Products | Count it in a `_UNMAPPED` bucket per region; alert lists offenders daily (same broom as sync) |
+| No SKU match in Products | Count in `_UNMAPPED` bucket per region, alert daily |
 | Multi-location split fulfilment | Attribute each line to its fulfilment location |
-| Refund after N days | Sales Daily is written once at D+1; refunds later than that are noise at reorder-decision granularity. Noted as a stated limit in the audit/handover. |
-| Pre-orders / drops | Exclude tagged pre-order products from velocity (CONFIG list): they poison reorder maths |
+| Refund after settling window | Sales Daily written once at D+1; later refunds are noise at this granularity — a stated limit |
+| Pre-orders/drops | Exclude tagged SKUs (CONFIG list) — they poison velocity |
 
 ## Per-client config
 
-| Item | Where |
-|---|---|
-| Region map | CONFIG node |
-| SLA threshold (default 48h) | CONFIG node |
-| Pre-order/exclusion SKU tags | CONFIG node |
-| Refund settling window | Fixed at D+1, documented |
+Region map, SLA threshold (default 48h), pre-order exclusion tags — all in
+CONFIG. Refund settling window fixed at D+1, documented.
 
-## Test procedure
+## Test before handover
 
-1. Run against yesterday; sum units per SKU; spot-check 3 SKUs against the
-   Shopify admin's own analytics for the same day.
+1. Run against yesterday; spot-check 3 SKUs against Shopify's own analytics.
 2. Re-run the same day twice; confirm row counts don't grow.
-3. Place a test order shipped to an unmapped country; confirm `_UNMAPPED`
-   alert.
+3. Ship a test order to an unmapped country; confirm `_UNMAPPED` alert.

@@ -1,70 +1,57 @@
 # Blueprint 1: Inventory Sync
 
 **Purpose:** Airtable Inventory Levels reflects reality in every warehouse,
-hourly. This is the single-source-of-truth promise made physical.
+hourly. The single-source-of-truth promise, made physical.
 
-**Sources, in priority order:**
-1. **Shopify inventory levels** (if the 3PL writes stock back to Shopify
-   locations, which most do): one connector covers all regions. Preferred.
-2. **3PL API directly** (if Shopify stock is unreliable or a location isn't
-   in Shopify): per-3PL HTTP node.
-3. **3PL email/SFTP report** (worst case): scheduled fetch + parse. Works,
-   ugly, quote extra build time.
-
-Establish which one is true during the audit (Q7/Q10 evidence), not on
-deploy day.
+**Sources, in priority order:** (1) Shopify inventory levels, if the 3PL
+writes stock back to Shopify locations — preferred, one connector covers
+all regions. (2) 3PL API directly, if a location isn't in Shopify. (3) 3PL
+email/SFTP report, worst case. Establish which is true during the audit
+(Q7/Q10), not on deploy day.
 
 ## Trigger
 
-Schedule: hourly at :10 (offset avoids clashing with 3PL's own on-the-hour
-jobs). Plus a manual trigger for on-demand resync.
+Hourly at :10 (offset avoids clashing with the 3PL's own on-the-hour jobs),
+plus a manual trigger for on-demand resync.
 
-## Flow (n8n nodes)
+## Flow (n8n)
 
-1. `CONFIG` (Set): Airtable base/table IDs, Shopify store domain,
-   location map `{shopify_location_id → airtable Location record ID}`.
-2. `Shopify: Get Inventory Levels` — REST `inventory_levels.json` per
-   location (Make: Shopify "List Inventory Levels"). Paginate fully.
-3. `Shopify: Get Products` (cached daily, not hourly) — map
-   `inventory_item_id → SKU`.
-4. `Join + reshape` (Code node): produce rows
-   `{SKU, location_record_id, on_hand, available}`.
-5. `Airtable: Search Inventory Levels` by SKU@Location key, chunked.
-6. `Branch`: match found → update On Hand / Allocated / Last Synced;
-   no match → **create the row** (new SKU or new location) and tag it
-   `auto-created` so a human reviews its product links.
-7. `Discrepancy check` (Code node): if any SKU's on-hand moved by more than
-   [[CONFIG: 30%]] in one hour, or went negative, flag it: don't silently
-   accept warehouse glitches. Send to alerts channel as "sync anomaly".
-8. `Airtable: batch update`, 10-row chunks, 250ms wait between.
+1. `CONFIG`: base/table IDs, Shopify domain, location map
+   `{shopify_location_id → Airtable Location record}`.
+2. Get Inventory Levels per location (paginate fully).
+3. Get Products (cached daily) — map `inventory_item_id → SKU`.
+4. Reshape to `{SKU, location_record_id, on_hand, available}`.
+5. Search Inventory Levels by SKU@Location key, chunked.
+6. Match found → update On Hand/Allocated/Last Synced. No match → **create
+   the row** (new SKU or location), tag `auto-created` for review.
+7. Anomaly check: any SKU moving >30% in one hour, or going negative, or an
+   all-zeros payload → abort the run and alert instead of writing over good
+   data.
+8. Batch update, 10-row chunks, 250ms wait.
 
 ## SKU mismatch policy
 
-The join key is the SKU string. On any Shopify SKU with no Products row:
-alert once per day per SKU (not per run), listing offenders. Dirty SKU
-masters are found in week one; this alert is the broom.
+Join key is the SKU string. Any Shopify SKU with no Products row: alert
+once per day (not per run), listing offenders. Dirty SKU masters surface in
+week one — this alert is the broom.
 
-## Failure modes and handling
+## Failure modes
 
 | Failure | Handling |
 |---|---|
-| Shopify 429 | Retry ×3, exponential backoff, then error workflow |
-| Airtable 422 (schema drift) | Error workflow, loud: someone renamed a field |
-| 3PL returns zero for everything | Anomaly check catches it; do NOT write zeros over good data when the whole payload is zeros: abort the run and alert |
-| Last Synced goes stale | Watched by low-stock-alerts workflow (blueprint 2), which alerts if any row is >24h old |
+| Shopify 429 | Retry ×3 exponential backoff, then error workflow |
+| Airtable 422 (schema drift) | Error workflow, loud |
+| 3PL returns all zeros | Anomaly check aborts + alerts, no writes |
+| Last Synced goes stale | Watched by low-stock-alerts (blueprint 2) |
 
 ## Per-client config
 
-| Item | Where |
-|---|---|
-| Store domain, API creds | n8n credentials `{client}-shopify` |
-| Location map | CONFIG node |
-| Anomaly threshold % | CONFIG node (default 30%) |
-| Sync frequency | Schedule node (default hourly; 15-min for launch weeks) |
+Store domain/creds in `{client}-shopify`; location map, anomaly threshold
+(default 30%), and sync frequency (default hourly, 15-min at launch) in
+CONFIG.
 
-## Test procedure (do before handover)
+## Test before handover
 
-1. Manually change a quantity in Shopify sandbox/dev location; run; confirm
-   Airtable updates and Last Synced advances.
-2. Add a fake Shopify SKU not in Airtable; confirm mismatch alert, not crash.
-3. Feed an all-zeros payload (mock node); confirm abort + alert, no writes.
+1. Change a quantity in a dev location; confirm Airtable updates.
+2. Add a Shopify SKU not in Airtable; confirm mismatch alert, not a crash.
+3. Feed an all-zeros payload; confirm abort + alert, no writes.

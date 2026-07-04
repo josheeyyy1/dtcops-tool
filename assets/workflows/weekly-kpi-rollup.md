@@ -1,40 +1,30 @@
 # Blueprint 4: Weekly KPI Roll-Up
 
-**Purpose:** every Monday 07:00 the founder gets one message with the five
-numbers that matter, and KPI Snapshots gains a week of history. This workflow
-is also the weekly heartbeat proving the whole system is alive: it's the
-retainer's public face.
+**Purpose:** every Monday 07:00, one message with the five numbers that
+matter, plus a week of history in KPI Snapshots. Also the weekly heartbeat
+proving the system's alive — the retainer's public face.
 
 ## Trigger
 
-Schedule: Mondays 06:30 client timezone (message lands 07:00 after compute).
-Covers Mon–Sun prior week.
+Mondays 06:30 client timezone (message lands 07:00), covering Mon–Sun prior
+week.
 
-## Flow (n8n nodes)
+## Flow (n8n)
 
-1. `CONFIG` (Set): base/table IDs, channel, reporting currency.
-2. **Refresh velocity:** `Airtable: read Sales Daily` last 30 days →
-   `Code: per SKU per region, avg units/day` → batch-update
-   `Avg Daily Sales 30d` on Inventory Levels. (Weekly on purpose: stable
-   reorder points. See blueprint 3.)
-3. **Read state:** Inventory Levels (all), Purchase Orders (open + late),
+1. `CONFIG`: base/table IDs, channel, reporting currency.
+2. **Refresh velocity:** read Sales Daily last 30 days, compute avg
+   units/day per SKU per region, batch-update `Avg Daily Sales 30d` on
+   Inventory Levels (weekly on purpose — see blueprint 3).
+3. **Read state:** Inventory Levels, Purchase Orders (open + late),
    Fulfilment Daily (last 7 days), Products (unit costs).
-4. `Code: compute per location + TOTAL`:
-   - Stock Value = Σ available × unit cost
-   - Units On Hand
-   - Median Days Cover across active SKUs with sales > 0
-   - Sell-Through % = week units sold ÷ (week units sold + units on hand)
-   - Orders Shipped, % ≤48h (from Fulfilment Daily)
-   - Open POs, Late POs
-   - SKUs Low Stock (count of flags)
-   - Stock-Out Days = Σ SKU-days where available ≤ 0 during the week
-     (needs a tiny daily snapshot of flags: the daily alerts workflow
-     appends `{date, SKU, location, available}` for zero/negative rows to a
-     `Stockout Log` table; cheap and worth it: this is the number the whole
-     engagement gets judged on)
-5. `Airtable: create KPI Snapshots rows` (one per location + TOTAL),
-   upsert on week+scope.
-6. `Code: build the Monday message`:
+4. **Compute per location + TOTAL:** stock value (Σ available × cost),
+   units on hand, median days cover (active SKUs with sales), sell-through
+   % (week units sold ÷ (sold + on hand)), orders shipped + % ≤48h, open/late
+   POs, SKUs low stock, stock-out days (Σ SKU-days at zero — the daily
+   alerts workflow appends zero/negative rows to a small `Stockout Log`
+   table; cheap, and it's the number the engagement gets judged on).
+5. Upsert KPI Snapshots (one row per location + TOTAL) on week+scope.
+6. Build the Monday message with deltas vs the previous snapshot:
 
    ```
    {CLIENT} WEEK {date range}
@@ -42,25 +32,22 @@ Covers Mon–Sun prior week.
    Median cover: N days | Low-stock SKUs: N | Stock-out days: N
    Fulfilment: N orders, X% ≤48h (UK X% / EU X% / US X%)
    POs: N open, N late ({PO numbers})
-   Watch: {top 3 SKUs by lowest cover, with suggested action}
+   Watch: {top 3 SKUs by lowest cover, suggested action}
    Dashboard: {Airtable interface URL}
    ```
 
-   Deltas vs previous snapshot row. Plain numbers, no commentary: the
-   monthly retainer call is where interpretation happens.
-7. `Send` to channel.
+   Plain numbers, no commentary — interpretation happens on the monthly
+   call.
+7. Send to channel.
 
 ## Per-client config
 
-| Item | Where |
-|---|---|
-| Channel + send time | CONFIG/Schedule nodes |
-| Reporting currency | CONFIG node |
-| Active-SKU definition (exclusions) | CONFIG node, same list as blueprint 3 |
+Channel, send time, reporting currency, active-SKU exclusion list (shared
+with blueprint 3) — all in CONFIG.
 
-## Test procedure
+## Test before handover
 
-1. Run manually mid-week against last full week; hand-check Stock Value and
-   Median Cover for one location against the base.
-2. Confirm re-run upserts (no duplicate snapshot rows).
-3. Break one table ID in CONFIG; confirm the error workflow fires loudly.
+1. Run mid-week against last full week; hand-check Stock Value and Median
+   Cover for one location.
+2. Confirm re-run upserts, no duplicate snapshot rows.
+3. Break a table ID in CONFIG; confirm the error workflow fires loudly.

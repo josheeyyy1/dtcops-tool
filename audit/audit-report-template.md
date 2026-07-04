@@ -96,9 +96,9 @@ on. Then one paragraph on sequence: weeks 1–2 foundation, weeks 3–4
 automation, weeks 5–6 dashboard and handover. No feature lists.]]
 
 The fix list above is yours either way: any competent operator could work
-through it. If you want it done in [[4–6]] weeks by someone who has built
+through it. If you want it done in 4–6 weeks by someone who has built
 exactly this for a multi-region supplement brand, that is the Ops Stack
-Build: fixed scope, fixed price, [[PRICE-BUILD]] minus the [[PRICE-AUDIT]]
+Build: fixed scope, fixed price, £9,500 minus the £2,000
 you have already paid.
 
 ## 7. Assumptions and limits
@@ -111,4 +111,4 @@ you have already paid.
 
 ---
 
-*Questions after the walkthrough: [[EMAIL]] / [[PHONE]]*
+*Questions after the walkthrough: joshuaadams91@gmail.com*

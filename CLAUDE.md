@@ -8,8 +8,14 @@ here is a sellable or reusable asset, not an experiment.
 ## Current state
 - Positioning, offers, audit product, asset library, site, outreach kit, and
   operating README are built. See README.md for the asset map and launch plan.
-- Two open decisions owned by Joshua: final pricing (positioning/offers.md)
-  and the first-15 outreach list (outreach/qualification-checklist.md).
+- Pricing is filled in with recommended values throughout (£2,000 audit /
+  £9,500 build / £1,500pm retainer, positioning/offers.md) — change it there
+  and in site/index.html together if Joshua lands on different numbers.
+- One open decision owned by Joshua: the first-15 outreach list
+  (outreach/qualification-checklist.md).
+- The site's "book a call" CTA is a mailto: link as a stopgap; swapping in a
+  real scheduler (Calendly/Cal.com) is a real task, not blocking, see
+  site/DEPLOY.md.
 
 ## Structure
 - `positioning/` — wedge, ICP, offers, recommended pricing

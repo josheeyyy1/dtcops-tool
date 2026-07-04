@@ -30,18 +30,20 @@ Each day has a hard stop condition. If a day's work is done by lunch, start
 the next day's work; never the reverse.
 
 **Day 1 — Mon 6 Jul: decisions and identity.**
-Set the three prices (react to the recommendations in
-`positioning/offers.md`). Confirm or soften the before/after metrics.
-Update LinkedIn headline per `outreach/linkedin.md`. Create the booking
-link (Calendly/Cal.com free tier, 30-min "Scoping call").
-*Done when: prices written into offers.md and index.html, headline live,
-booking link works in an incognito window.*
+Prices are pre-filled at the recommended £2,000 / £9,500 / £1,500pm
+throughout the repo — react to them in `positioning/offers.md` (change in
+both offers.md and index.html if you land on different numbers, nothing
+else depends on the exact figures). Update LinkedIn headline per
+`outreach/linkedin.md`. Set up a scheduler (Calendly/Cal.com free tier,
+30-min "Scoping call") and swap it in for the `mailto:` link in
+`site/index.html`'s CTA — the mailto works as a stopgap if you don't get to
+this today.
+*Done when: prices confirmed (or changed) in both files, headline live.*
 
 **Day 2 — Tue 7 Jul: site live.**
-Replace every `class="todo"` in `site/index.html` (checklist in
-`site/DEPLOY.md`). Deploy to Vercel. Read it once aloud; fix anything you
+Deploy to Vercel (`site/DEPLOY.md`). Read it once aloud; fix anything you
 wouldn't say to a founder's face.
-*Done when: the URL loads on your phone and the booking link on it works.*
+*Done when: the URL loads on your phone and the CTA on it works.*
 
 **Day 3 — Wed 8 Jul: the list.**
 30 candidate names from your network into `outreach/pipeline.csv`. Score

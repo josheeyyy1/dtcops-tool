@@ -35,7 +35,7 @@ access. This is diagnosis, not surgery.
 **Deliverable:** The audit report (see `audit/audit-report-template.md`) and
 the prioritised fix list. Theirs to keep and act on with or without me.
 
-**Price:** [[PRICE-AUDIT]], fully credited against the build if they proceed
+**Price:** £2,000, fully credited against the build if they proceed
 within 30 days.
 
 ---
@@ -68,7 +68,7 @@ agreed in writing before start; scope changes are quoted separately.
 **Deliverable:** A running system in their accounts (they own everything),
 documentation, and a trained operator.
 
-**Price:** [[PRICE-BUILD]] fixed, minus the audit fee if within 30 days.
+**Price:** £9,500 fixed, minus the audit fee if within 30 days.
 50% on start, 50% on handover.
 
 ---
@@ -80,11 +80,11 @@ business as it changes: new SKUs, new regions, new 3PLs, seasonal demand.
 
 **What's in (per month):**
 - Monitoring and maintenance of all syncs, alerts and dashboards
-- Up to [[N: suggest 2]] working days of changes: new automations, new SKU
+- Up to 2 working days of changes: new automations, new SKU
   onboarding, rule tuning, new reports
 - Monthly 45-minute ops review against the KPI dashboard: what fired, what
   it caught, what to change
-- Priority response: [[SLA: suggest next business day]]
+- Priority response: next business day
 
 **What's out:** New-region or new-3PL integrations bigger than the monthly
 day allowance (quoted as mini-builds). Anything in the build's exclusion
@@ -94,11 +94,16 @@ list. Being their ops employee: I run the system, not the warehouse.
 
 **Deliverable:** A system that stays alive, plus the monthly review.
 
-**Price:** [[PRICE-RETAINER]]/month.
+**Price:** £1,500/month.
 
 ---
 
-## Recommended pricing (DECISION: Joshua reacts to these)
+## Pricing reasoning (applied above; adjust any time)
+
+The prices above are my recommendation, applied throughout this repo so
+everything is consistent and deployable. Change them here and in
+`site/index.html` if you land on different numbers; nothing else depends on
+the exact figures.
 
 | Offer | Floor | **Recommended** | Stretch | Reasoning |
 |---|---|---|---|---|

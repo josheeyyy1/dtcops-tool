@@ -107,10 +107,10 @@ The report does the selling.
 
 ## Close of call
 
-1. "That's everything I need. Here's what happens next: I take [[X days]] with
+1. "That's everything I need. Here's what happens next: I take two weeks with
    read-only access to Shopify and your 3PL reports, score what I find across
    eight areas, and hand you a report with a prioritised fix list and what
-   each problem is costing you. That's the Stock Audit, it's [[PRICE-AUDIT]],
+   each problem is costing you. That's the Stock Audit, it's £2,000,
    and it's credited against the build if you go ahead within 30 days."
 2. Book the walkthrough call before hanging up. A report without a booked
    walkthrough is a PDF in a drawer.

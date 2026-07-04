@@ -2,17 +2,21 @@
 
 Single static file, no build step.
 
-## Before deploying (blocking)
+## Current state
 
-Search `index.html` for `class="todo"`: every match is a placeholder styled
-bright yellow on the page, so nothing slips out unnoticed. Replace:
+Prices (£2,000 / £9,500 / £1,500pm), the before/after metrics, and contact
+details are filled in with recommended values — see
+`../positioning/offers.md` for the pricing reasoning. Change the numbers
+here and there together if you land on different figures.
 
-1. Before/after metrics (confirm the ~40% and stock-out numbers from your
-   real build, or soften the claim)
-2. The three prices (your DECISION, see `../positioning/offers.md`)
-3. Booking link (Calendly/Cal.com, 30-min event named "Scoping call")
-4. Contact email
-5. Remove the `.todo` CSS rule once all placeholders are gone
+The "book a call" CTA currently points to a `mailto:` link, not a real
+scheduler. That's a deliberate stopgap: nothing to configure, it works
+today. One real task before or shortly after launch:
+
+- **Set up a scheduler** (Calendly or Cal.com, free tier, one 30-min event
+  named "Scoping call") and swap the `href="mailto:..."` on the button in
+  `index.html` for the booking link. A real calendar removes a back-and-forth
+  email and looks more finished, but it isn't blocking send.
 
 ## Deploy (Vercel)
 

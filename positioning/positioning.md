@@ -58,9 +58,14 @@ Short version (cold email, verbal):
 - Wants a custom app, a warehouse, or fulfilment renegotiation: not what I sell.
 - Marketplace-first (Amazon-only): different stock model, different tooling.
 
-## Why me (the credibility line, placeholder metrics to confirm)
+## Why me (the credibility line)
 
 > I built exactly this in-house at a supplements brand selling across UK, EU
 > and US: Airtable as the single source of truth, inventory sync across 3PLs,
 > reorder logic, KPI dashboards. It cut manual ops work by around
-> [[CONFIRM: ~40%]] and took hero-SKU stock-outs to [[CONFIRM: zero]].
+> 40% and took hero-SKU stock-outs to zero.
+
+These two numbers are yours, from your own account of the in-house build.
+If you can tie either to a harder figure (hours/week before vs after, an
+actual stock-out count) by the time you're on calls, do: a number you can
+defend under a follow-up question beats a rounder one you can't.

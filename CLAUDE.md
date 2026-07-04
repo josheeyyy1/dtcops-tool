@@ -45,3 +45,21 @@ here is a sellable or reusable asset, not an experiment.
   no build. See site/DEPLOY.md for the Vercel import steps.
 - CSVs in `assets/airtable/` import directly into a new Airtable base in the
   order given in `assets/airtable/schema.md`.
+
+## Design Context (site/)
+- Audience: sceptical, busy founders/ops leads of £1–10m DTC supplement
+  brands, evaluating one person's competence before paying £2,000.
+  Emotional goals: confidence and relief, not excitement.
+- Aesthetic: high-end premium minimalist high-tech, aligned with
+  airtable.com. Light theme, warm-white surfaces, near-black ink, one blue
+  accent, generous whitespace, data rendered honestly (tables, status
+  pills, tabular numerals). No dark-neon dashboards, no gradient text, no
+  stock photography, no invented specifics.
+- Typography: Bricolage Grotesque (headings), Hanken Grotesk (body),
+  Spline Sans Mono (data/labels only). Colors in OKLCH, neutrals tinted
+  toward the brand blue.
+- Principles: the site is a demo of the service (calm, accurate,
+  system-like); motion states facts (sync, convergence, alerts), never
+  decoration, always honouring prefers-reduced-motion; whitespace is the
+  luxury; one accent spent sparingly; copy is sacred.
+- Full context lives in `.impeccable.md` at the repo root.

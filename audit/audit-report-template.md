@@ -19,7 +19,7 @@ reports [[PERIOD]], purchase orders [[PERIOD]], current working spreadsheets.
 what fixing it is worth per year. A founder reading only this paragraph
 should know what to do.]]
 
-**Overall score: [[NN]]% — [[BAND]]**
+**Overall score: [[NN]]%, [[BAND]]**
 
 ## 2. What this is costing you
 

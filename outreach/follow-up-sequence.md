@@ -1,15 +1,14 @@
 # The 5-Touch Sequence
 
-Cold prospects only (network contacts get one message and one nudge; don't
-run sequences on people who know you). Stop the moment they reply, even to
-say no. A "no" gets a one-line thanks and goes on the 90-day list.
-
-Every touch must add something new. Never send "just bumping this".
+Cold prospects only — network contacts get one message and one nudge, not a
+sequence. Stop the moment they reply, even to say no (thank them, and move
+them to the 90-day list). Every touch must add something new; never send
+"just bumping this."
 
 | Touch | Day | Channel | Job |
 |---|---|---|---|
-| 1 | 0 | Email | The observation + credibility + soft ask (`cold-email.md`) |
-| 2 | 3 | LinkedIn | Connection note (`linkedin.md`). Different channel, same face |
+| 1 | 0 | Email | Observation + credibility + soft ask (`cold-email.md`) |
+| 2 | 3 | LinkedIn | Connection note (`linkedin.md`) — different channel, same face |
 | 3 | 7 | Email | New angle: one concrete cost number |
 | 4 | 14 | Email | Give something away: the self-serve checklist |
 | 5 | 21 | Email | Close the loop, leave the door open |
@@ -25,8 +24,8 @@ Every touch must add something new. Never send "just bumping this".
 > subscriber. When we priced it honestly, every week our hero SKU was dark
 > in a region cost more than a month of the fix.
 >
-> Still happy to compare notes on how you run stock across regions.
-> 30 minutes, no pitch.
+> Still happy to compare notes on how you run stock across regions. 30
+> minutes, no pitch.
 >
 > Joshua
 
@@ -56,8 +55,8 @@ Every touch must add something new. Never send "just bumping this".
 >
 > Joshua
 
-This touch gets forwarded. It's the audit in miniature, which is the point:
-anyone who self-scores 3/8 books the call themselves.
+This touch gets forwarded — it's the audit in miniature, which is the
+point: anyone who self-scores 3/8 books the call themselves.
 
 ## Touch 5 (day 21): the close
 
@@ -76,11 +75,11 @@ anyone who self-scores 3/8 books the call themselves.
 >
 > {{booking link}}
 
-First time a link appears in the sequence. After this, they go on the 90-day
-re-touch list with a note of where things stood.
+First time a link appears in the sequence. After this, they go on the
+90-day re-touch list with a note of where things stood.
 
 ## Bookkeeping (non-negotiable)
 
 Track every prospect in `outreach/pipeline.csv`: touch dates, replies,
-outcome. The kill/keep decision in the README runs on this file, so if it
+outcome. The kill/keep decision in the README runs on this file — if it
 isn't filled in, you can't know whether this business works.

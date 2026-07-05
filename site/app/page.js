@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BOOKING_URL } from "../lib/constants";
 import LiveDashboard from "../components/LiveDashboard";
 import Convergence from "../components/Convergence";
+import DemoExplorer from "../components/DemoExplorer";
 import Reveal from "../components/Reveal";
 import { IconArrowRight } from "../components/Icons";
 
@@ -128,6 +129,19 @@ export default function HomePage() {
             <span className="ledger-tag">Every Monday</span>
           </Reveal>
         </div>
+
+        <Reveal className="demo-intro" delay={80}>
+          <h3 style={{ marginTop: "48px" }}>Try the demo build</h3>
+          <p>
+            This is a working copy of the system, running on invented numbers
+            for a fictional home fragrance brand selling from UK, EU and US
+            warehouses. Click around it. Your build runs the same logic on
+            your numbers.
+          </p>
+        </Reveal>
+        <Reveal delay={140}>
+          <DemoExplorer />
+        </Reveal>
 
         <Reveal className="own">
           <span className="own-label">Ownership</span>
